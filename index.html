@@ -38,16 +38,17 @@
       padding: 40px 0;
     }
 
+    /* Disable global vertical entrance animation to avoid slow down-from-bottom effect */
     .fade-in-section {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      will-change: opacity, transform;
+      opacity: 1;
+      transform: none;
+      transition: none;
+      will-change: auto;
     }
 
     .fade-in-section.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
     }
 
     .zoom-on-hover {
@@ -155,7 +156,12 @@
     }
 
     #hero {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      /* Stylized silver-with-white-center background (replicates st1.jpg) */
+      background-image:
+        radial-gradient(circle at center, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 12%, rgba(236,238,241,1) 28%, rgba(216,218,222,1) 50%, rgba(196,198,202,1) 68%, rgba(170,172,176,1) 88%, rgba(150,152,156,1) 100%);
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
       color: white;
       min-height: 100vh;
       display: flex;
@@ -163,6 +169,7 @@
       justify-content: center;
       position: relative;
       padding-top: 80px;
+      overflow: hidden;
     }
 
     #hero .container {
@@ -193,6 +200,28 @@
       font-size: 1.4rem;
       color: rgba(255, 255, 255, 0.9);
       text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Basic hero layout (no decorative floating image or slide-in added) */
+    #hero {
+      background-image: url("img2/st2.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding-top: 80px;
+      overflow: hidden;
+    }
+
+    /* Keep the container content on top of the background */
+    #hero .container {
+      position: relative;
+      z-index: 1;
     }
 
     .project-list {
@@ -327,6 +356,39 @@
       font-size: 1.6rem;
       cursor: pointer;
     }
+    /* Clickable title */
+.toggle-title {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Arrow animation */
+.toggle-title .arrow {
+  transition: transform 0.3s ease;
+}
+
+/* Hidden by default */
+.cert-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s ease, opacity 0.4s ease;
+}
+
+/* Visible state */
+.cert-content.show {
+  max-height: 5000px; /* large enough */
+  opacity: 1;
+}
+
+/* Rotate arrow when open */
+.toggle-title.active .arrow {
+  transform: rotate(180deg);
+}
+
     .modal-content iframe {
       width: 100%;
       height: 70vh;
@@ -371,11 +433,43 @@
     }
 
     .name {
-      background: linear-gradient(90deg, rgb(250, 72, 174), #2CE2D1);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
+      /* large readable name that will move across the hero (starts at right edge) */
+      position: absolute;
+      top: 50%;
+      left: 130%; /* start off the right edge */
+      transform: translateY(-50%);
+      color: #3b2414;
+      font-weight: 700;
+      font-size: clamp(2rem, 6vw, 4.25rem);
+      line-height: 1;
+      opacity: 0;
+      transition: left 0.9s cubic-bezier(.2,.9,.2,1), opacity 0.6s ease, transform 0.6s ease;
+      will-change: left, opacity, transform;
+      z-index: 3;
+      white-space: nowrap;
+    }
+
+    /* final position: centered but slightly to the right */
+    .name.name-animate {
+      left: 50%;
+      transform: translate(-10%, -50%); /* nudged slightly more to the right */
+      opacity: 1;
+    }
+
+    /* Small-screen fallback: keep name centered and in flow */
+    @media (max-width: 767px) {
+      .name {
+        position: static;
+        transform: none;
+        left: auto;
+        top: auto;
+        opacity: 1;
+        text-align: center;
+        display: block;
+        margin: 0 auto 8px auto;
+        font-size: 2rem;
+      }
+      .name.name-animate { left: auto; transform: none; }
     }
 
     @media (max-width: 767px) {
@@ -423,6 +517,18 @@
         width: 120px;
         height: 120px;
         margin: 0 0 12px 0;
+      }
+
+      /* mobile-friendly hero image: keep rectangular, reduce size */
+      .hero-image {
+        width: 180px;
+        height: 160px;
+        border-radius: 0;
+      }
+
+      .hero-left, .hero-right {
+        transform: none;
+        opacity: 1;
       }
 
       .project {
@@ -504,6 +610,8 @@
       }
 
       .nav-links li a {
+        
+
         display: block;
         width: 100%;
         padding: 10px 12px;
@@ -512,6 +620,9 @@
         color: white;
       }
     }
+
+    /* Removed duplicate header/hero background blocks added earlier to keep styles clean */
+
   </style>
 </head>
 
@@ -537,14 +648,11 @@
     </nav>
   </header>
 
-  <section id="hero" class="fade-in-section">
-    <div class="container">
-      <img src="profile.jpg" alt="Freshta Nazari Photo" class="zoom-on-hover" />
-      <div>
-        <h2>Hello, I'm <span class="name">Freshta Nazari</span></h2>
-        <p>Aspiring Web Developer & Artist</p>
-      </div>
+  <section id="hero" class="hero fade-in-section">
+    <div class="container hero-inner">
+      <div class="name" style="color:#321c0e">Freshta Nazari</div>
     </div>
+    <!-- decorative foreground image that will slide in from the right -->
   </section>
 
   <section id="about" class="fade-in-section">
@@ -562,76 +670,175 @@
     </div>
   </section>
 
-  <section id="certificates" class="fade-in-section">
-    <div class="container">
-      <h2>Certificates & Achievements</h2>
-      <div class="project-list">
-        <div class="project zoom-on-hover">
-          <img src="best speaker of mun.jpg" alt="Best Speaker of MUN">
-          <div class="meta"><h3>Best Speaker of MUN</h3><p class="meta">Certificate image.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="best speaker of mun.jpg" data-cert-title="Best Speaker of MUN">View Certificate</button></p></div>
-        </div>
-        <div class="project zoom-on-hover">
-          <img src="Computer creative thinkers.jpg" alt="Computer Creative Thinkers">
-          <div class="meta"><h3>Computer Creative Thinkers</h3><p class="meta">Certificate image.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="Computer creative thinkers.jpg" data-cert-title="Computer Creative Thinkers">View Certificate</button></p></div>
-        </div>
-        <div class="project zoom-on-hover">
-          <img src="delegate of japan.jpg" alt="Delegate of Japan">
-          <div class="meta"><h3>Delegate of Japan</h3><p class="meta">Certificate image.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="delegate of japan.jpg" data-cert-title="Delegate of Japan">View Certificate</button></p></div>
-        </div>
-        <div class="project zoom-on-hover">
-          <img src="english creative thinkers.jpg" alt="English Creative Thinkers">
-          <div class="meta"><h3>English Creative Thinkers</h3><p class="meta">Certificate image.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="english creative thinkers.jpg" data-cert-title="English Creative Thinkers">View Certificate</button></p></div>
-        </div>
-        <div class="project zoom-on-hover">
-          <img src="Freshta Nazari-certificate.jpg" alt="Freshta Nazari Certificate">
-          <div class="meta"><h3>Freshta Nazari Certificate</h3><p class="meta">Certificate image.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="Freshta Nazari-certificate.jpg" data-cert-title="Freshta Nazari Certificate">View Certificate</button></p></div>
-        </div>
-        <div class="project zoom-on-hover">
-          <img src="HAWA.jpg" alt="HAWA">
-          <div class="meta"><h3>HAWA</h3><p class="meta">Certificate image.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="HAWA.jpg" data-cert-title="HAWA">View Certificate</button></p></div>
-        </div>
-        <div class="project zoom-on-hover">
-          <img src="MUN.jpg" alt="MUN">
-          <div class="meta"><h3>MUN</h3><p class="meta">Certificate image.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="MUN.jpg" data-cert-title="MUN">View Certificate</button></p></div>
-        </div>
-        <div class="project zoom-on-hover">
-          <img src="photo_2025-04-16_23-10-06.jpg" alt="Photo">
-          <div class="meta"><h3>Photograph</h3><p class="meta">Image file.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="photo_2025-04-16_23-10-06.jpg" data-cert-title="Photograph">View Image</button></p></div>
-        </div>
-        <div class="project zoom-on-hover">
-          <h3 style="color:#667eea;">Freshta Nazari (Prow)</h3><p class="meta">Certificate document.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="Freshta Nazari. prow.pdf" data-cert-title="Freshta Nazari (Prow)">View Certificate</button></p>
-        </div>
-        <div class="project zoom-on-hover">
-          <h3 style="color:#667eea;">Freshta Nazari</h3><p class="meta">Certificate document.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="Freshta Nazari.pdf" data-cert-title="Freshta Nazari">View Certificate</button></p>
-        </div>
-        <div class="project zoom-on-hover">
-          <h3 style="color:#667eea;">Energy Economics</h3><p class="meta">Energy Economics, Environment and Policy certificate.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="Freshta_Nazari–Energy_Economics_Environment_and_Policy–Energy_Economics.pdf" data-cert-title="Energy Economics Certificate">View Certificate</button></p>
-        </div>
-        <div class="project zoom-on-hover">
-          <h3 style="color:#667eea;">Nbel Certificate</h3><p class="meta">Nbel certificate.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="Nbel cer.pdf" data-cert-title="Nbel Certificate">View Certificate</button></p>
-        </div>
-        <div class="project zoom-on-hover">
-          <h3 style="color:#667eea;">Nobel Certificate</h3><p class="meta">Nobel certificate.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="nobel.pdf" data-cert-title="Nobel Certificate">View Certificate</button></p>
-        </div>
-        <div class="project zoom-on-hover">
-          <h3 style="color:#667eea;">Olympia Certificate</h3><p class="meta">Olympia certificate.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="owlypia.pdf" data-cert-title="Olympia Certificate">View Certificate</button></p>
-        </div>
-        <div class="project zoom-on-hover">
-          <h3 style="color:#667eea;">Parkour Certificate</h3><p class="meta">Parkour certificate.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="Parkour.pdf" data-cert-title="Parkour Certificate">View Certificate</button></p>
-        </div>
-        <div class="project zoom-on-hover">
-          <h3 style="color:#667eea;">S25022 (1)</h3><p class="meta">Certificate document.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="S25022 (1).pdf" data-cert-title="S25022 (1) Certificate">View Certificate</button></p>
-        </div>
-        <div class="project zoom-on-hover">
-          <h3 style="color:#667eea;">S25022</h3><p class="meta">Certificate document.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="S25022.pdf" data-cert-title="S25022 Certificate">View Certificate</button></p>
-        </div>
-        <div class="project zoom-on-hover">
-          <h3 style="color:#667eea;">Sustainable Development</h3><p class="meta">Sustainable development certificate.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="sustainable developement.pdf" data-cert-title="Sustainable Development">View Certificate</button></p>
-        </div>
-        <div class="project zoom-on-hover">
-          <h3 style="color:#667eea;">Volleyball Certificate</h3><p class="meta">Volleyball certificate.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="volleyball certificate.pdf" data-cert-title="Volleyball Certificate">View Certificate</button></p>
+  
+ <section id="certificates" class="fade-in-section">
+  <div class="container">
+    <h2>Certificates & Achievements</h2>
+
+    <div class="project-list">
+
+      <div class="project zoom-on-hover">
+        <img src="best speaker of mun.jpg" alt="Best Speaker of MUN">
+        <div class="meta">
+          <h3>Best Speaker of MUN</h3>
+          <p class="meta">Certificate image.</p>
+          <p style="margin-top:8px;">
+            <button class="btn open-cert-btn"
+              data-cert-src="best speaker of mun.jpg"
+              data-cert-title="Best Speaker of MUN">
+              View Certificate
+            </button>
+          </p>
         </div>
       </div>
+
+      <div class="project zoom-on-hover">
+        <img src="Computer creative thinkers.jpg" alt="Computer Creative Thinkers">
+        <div class="meta">
+          <h3>Computer Creative Thinkers</h3>
+          <p class="meta">Certificate image.</p>
+          <p style="margin-top:8px;">
+            <button class="btn open-cert-btn"
+              data-cert-src="Computer creative thinkers.jpg"
+              data-cert-title="Computer Creative Thinkers">
+              View Certificate
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <div class="project zoom-on-hover">
+        <img src="delegate of japan.jpg" alt="Delegate of Japan">
+        <div class="meta">
+          <h3>Delegate of Japan</h3>
+          <p class="meta">Certificate image.</p>
+          <p style="margin-top:8px;">
+            <button class="btn open-cert-btn"
+              data-cert-src="delegate of japan.jpg"
+              data-cert-title="Delegate of Japan">
+              View Certificate
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <div class="project zoom-on-hover">
+        <img src="english creative thinkers.jpg" alt="English Creative Thinkers">
+        <div class="meta">
+          <h3>English Creative Thinkers</h3>
+          <p class="meta">Certificate image.</p>
+          <p style="margin-top:8px;">
+            <button class="btn open-cert-btn"
+              data-cert-src="english creative thinkers.jpg"
+              data-cert-title="English Creative Thinkers">
+              View Certificate
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <div class="project zoom-on-hover">
+        <img src="Freshta Nazari-certificate.jpg" alt="Freshta Nazari Certificate">
+        <div class="meta">
+          <h3>Freshta Nazari Certificate</h3>
+          <p class="meta">Certificate image.</p>
+          <p style="margin-top:8px;">
+            <button class="btn open-cert-btn"
+              data-cert-src="Freshta Nazari-certificate.jpg"
+              data-cert-title="Freshta Nazari Certificate">
+              View Certificate
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <div class="project zoom-on-hover">
+        <img src="HAWA.jpg" alt="HAWA">
+        <div class="meta">
+          <h3>HAWA</h3>
+          <p class="meta">Certificate image.</p>
+          <p style="margin-top:8px;">
+            <button class="btn open-cert-btn"
+              data-cert-src="HAWA.jpg"
+              data-cert-title="HAWA">
+              View Certificate
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <div class="project zoom-on-hover">
+        <img src="MUN.jpg" alt="MUN">
+        <div class="meta">
+          <h3>MUN</h3>
+          <p class="meta">Certificate image.</p>
+          <p style="margin-top:8px;">
+            <button class="btn open-cert-btn"
+              data-cert-src="MUN.jpg"
+              data-cert-title="MUN">
+              View Certificate
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <div class="project zoom-on-hover">
+        <img src="photo_2025-04-16_23-10-06.jpg" alt="Photograph">
+        <div class="meta">
+          <h3>Photograph</h3>
+          <p class="meta">Image file.</p>
+          <p style="margin-top:8px;">
+            <button class="btn open-cert-btn"
+              data-cert-src="photo_2025-04-16_23-10-06.jpg"
+              data-cert-title="Photograph">
+              View Image
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <!-- PDF Certificates -->
+      <div class="project zoom-on-hover">
+        <h3 style="color:#667eea;">Freshta Nazari (Prow)</h3>
+        <p class="meta">Certificate document.</p>
+        <p style="margin-top:8px;">
+          <button class="btn open-cert-btn"
+            data-cert-src="Freshta Nazari. prow.pdf"
+            data-cert-title="Freshta Nazari (Prow)">
+            View Certificate
+          </button>
+        </p>
+      </div>
+
+      <div class="project zoom-on-hover">
+        <h3 style="color:#667eea;">Energy Economics</h3>
+        <p class="meta">Energy Economics, Environment and Policy.</p>
+        <p style="margin-top:8px;">
+          <button class="btn open-cert-btn"
+            data-cert-src="Freshta_Nazari–Energy_Economics_Environment_and_Policy–Energy_Economics.pdf"
+            data-cert-title="Energy Economics Certificate">
+            View Certificate
+          </button>
+        </p>
+      </div>
+
+      <div class="project zoom-on-hover">
+        <h3 style="color:#667eea;">Volleyball Certificate</h3>
+        <p class="meta">Volleyball certificate.</p>
+        <p style="margin-top:8px;">
+          <button class="btn open-cert-btn"
+            data-cert-src="volleyball certificate.pdf"
+            data-cert-title="Volleyball Certificate">
+            View Certificate
+          </button>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
       <h2 style="margin-top: 40px;">English Proficiency</h2>
       <div class="project-list">
         <div class="project zoom-on-hover">
@@ -653,7 +860,7 @@
       <h2>Podcast</h2>
       <div class="project-list">
         <div class="project zoom-on-hover">
-          <img src="podcast_cover.jpg" alt="Podcast cover">
+          <img src="podcast1.jpg" alt="Podcast cover">
           <div class="meta">
             <h3>Podcast: Voices & Stories</h3>
             <p>A short-form podcast I created focused on empowerment and storytelling for young Afghan women. Episodes cover personal stories, leadership tips, and interviews.</p>
@@ -672,7 +879,7 @@
       <div class="social-icons">
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=freshtanzri83@gmail.com" target="_blank" rel="noopener" title="Send Email"><i class="fas fa-envelope"></i></a>
         <a href="https://www.linkedin.com/in/freshtanazari/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href= "https://github.com/NazariFreshta/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://www.instagram.com/yourusername" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
@@ -709,17 +916,11 @@
       });
     });
 
-    const fadeSections = document.querySelectorAll('.fade-in-section');
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    // Disabled global fade-in vertical motion per user request.
+    // Ensure sections are visible immediately (no slow translate-from-bottom animation).
+    document.querySelectorAll('.fade-in-section').forEach(el => el.classList.add('visible'));
 
-    fadeSections.forEach(section => observer.observe(section));
+    // Hero split animation removed per user request (reverting assistant changes)
 
     (function () {
       const btn = document.querySelector('.hamburger');
@@ -750,6 +951,17 @@
         }
       });
     })();
+    
+    // Animate the .name element: slide from left -> stop beside the image
+    document.addEventListener('DOMContentLoaded', () => {
+      const nameEl = document.querySelector('.name');
+      const hero = document.getElementById('hero');
+      if (!nameEl || !hero) return;
+      // ensure hero container is positioned so absolute placement is stable
+      hero.style.position = hero.style.position || 'relative';
+      // small delay so fonts/layout are stable before animating
+      setTimeout(() => nameEl.classList.add('name-animate'), 200);
+    });
 
     (function () {
       const openBtns = document.querySelectorAll('.open-cert-btn');
@@ -815,15 +1027,12 @@
         if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
     })();
+    
   </script>
 
 </body>
 
 </html>
-
-
-
-
 
 
 
