@@ -156,19 +156,20 @@
     }
 
     #hero {
-      /* Stylized silver-with-white-center background (replicates st1.jpg) */
-      background-image: url("st2.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;      /* fills the section */
-      background-position: center; /* keeps it centered */
-      height: 100vh;               /* full screen height */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding-top: 80px;
-      overflow: hidden;
-    }
+  background-image: url("st2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
 
     #hero .container {
       display: flex;
@@ -840,37 +841,46 @@
 
 
       <h2 style="margin-top: 40px;">English Proficiency</h2>
-      <div class="project-list">
-        <div class="project zoom-on-hover">
-          <img src="duolingo certificate.jpg">
-        </div>
-        <div class="project zoom-on-hover">
-          <img src="upper_intermediate certificate.jpg">
-        </div>
-        <div class="project zoom-on-hover">
-          <img src="Screenshot 2025-11-16 024700.png" alt="New English Certificate">
-          <div class="meta"><h3>Additional English Certificate</h3><p class="meta">TOEFL English proficiency certification.</p><p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="TOEFL_Score_Report_1710523.pdf" data-cert-title="TOEFL Certificate">View Certificate</button></p></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="podcast" class="fade-in-section">
-    <div class="container">
-      <h2>Podcast</h2>
-      <div class="project-list">
-        <div class="project zoom-on-hover">
-          <img src="podcast1.jpg" alt="Podcast cover">
-          <div class="meta">
-            <h3>Podcast: Voices & Stories</h3>
-            <p>A short-form podcast I created focused on empowerment and storytelling for young Afghan women. Episodes cover personal stories, leadership tips, and interviews.</p>
-            <p style="margin-top:8px;"><a class="btn" href="https://riverside.fm/dashboard/studios/reshads-studio-9BX3d/projects/68ab7ba94514bd29fdde132b" target="_blank" rel="noopener">Listen to the podcast</a></p>
-            <p style="margin-top:8px;"><button class="btn open-cert-btn" data-cert-src="podcast_certificate.pdf" data-cert-title="Podcast Certificate">View Certificate</button></p>
-          </div>
-        </div>
-      </div>
+<div class="project-list">
+
+  <div class="project zoom-on-hover">
+    <img src="duolingo certificate.jpg" alt="Duolingo Certificate">
+    <p style="margin-top:8px;">
+      <button class="btn open-cert-btn"
+        data-cert-src="duolingo certificate.jpg"
+        data-cert-title="Duolingo English Certificate">
+        View Certificate
+      </button>
+    </p>
+  </div>
+
+  <div class="project zoom-on-hover">
+    <img src="upper_intermediate certificate.jpg" alt="Upper Intermediate Certificate">
+    <p style="margin-top:8px;">
+      <button class="btn open-cert-btn"
+        data-cert-src="upper_intermediate certificate.jpg"
+        data-cert-title="Upper Intermediate English Certificate">
+        View Certificate
+      </button>
+    </p>
+  </div>
+
+  <div class="project zoom-on-hover">
+    <img src="Screenshot 2025-11-16 024700.png" alt="TOEFL Certificate">
+    <div class="meta">
+      <h3>TOEFL English Certificate</h3>
+      <p style="margin-top:8px;">
+        <button class="btn open-cert-btn"
+          data-cert-src="TOEFL_Score_Report_1710523.pdf"
+          data-cert-title="TOEFL Certificate">
+          View Certificate
+        </button>
+      </p>
     </div>
-  </section>
+  </div>
+
+</div>
 
   <section id="contact" class="fade-in-section">
     <div class="container">
@@ -1033,6 +1043,7 @@
 </body>
 
 </html>
+
 
 
 
