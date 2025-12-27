@@ -193,6 +193,7 @@
       }
     }
         /* Hero Section - Updated for all screen sizes */
+        /* Hero Section - Updated for all screen sizes */
     #hero {
       background-image: url("st2.jpg");
       background-size: cover;
@@ -265,7 +266,7 @@
       }
 
       #hero::before {
-        background: rgba(0, 0, 0, 0.2); /* Very light overlay for tablets */
+        background: rgba(0, 0, 0, 0.2);
       }
 
       #hero .container {
@@ -284,56 +285,65 @@
       }
     }
 
-    /* Mobile view (up to 767px) - UPDATED */
+    /* Mobile view (up to 767px) - UPDATED FOR JACKET POSITIONING */
     @media (max-width: 767px) {
       #hero {
         min-height: 85vh;
         padding-top: 60px;
         /* Use mobile-optimized background and shift to show full figure */
         background-image: url("st22.jpg");
-        background-position: 70% center;
+        background-position: 70% 30%; /* Adjusted to show jacket area at bottom */
       }
 
       #hero::before {
-        background: rgba(0, 0, 0, 0.2); /* Very light overlay */
+        background: rgba(0, 0, 0, 0.2);
       }
 
       #hero .container {
         padding: 20px 15px;
         flex-direction: column;
-        justify-content: flex-end; /* Push content to bottom */
+        justify-content: flex-end;
         height: 100%;
-        padding-bottom: 60px; /* Space from bottom */
+        padding-bottom: 40px; /* Reduced padding for better jacket positioning */
       }
 
-      /* Name at the bottom in mobile view */
+      /* Name at the BOTTOM on the JACKET area in mobile view */
       .name {
         position: absolute;
-        top: auto;
-        bottom: 10px;
-        /* place slightly left of center for mobile review */
-        left: 45%;
-        transform: translateX(-50%);
+        /* START POSITION: off screen to the LEFT */
+        left: -100%;
+        /* FINAL POSITION: centered at bottom on jacket */
+        bottom: 5%; /* Adjust this to place on jacket area */
+        transform: translateX(0);
         opacity: 1;
         text-align: center;
         font-size: 2.2rem;
         white-space: normal;
-        width: 90%;
+        width: 100%;
         margin: 0;
         color: white !important;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+        text-shadow: 
+          0 2px 4px rgba(0, 0, 0, 0.8),
+          0 4px 8px rgba(0, 0, 0, 0.6),
+          0 0 20px rgba(0, 0, 0, 0.5); /* Stronger shadow for better visibility */
+        font-weight: 800;
+        letter-spacing: 1px;
+        transition: left 1s cubic-bezier(0.4, 0, 0.2, 1), 
+                   bottom 0.5s ease 0.8s; /* Staggered animation */
       }
 
       .name.name-animate {
-        left: 45%;
+        /* FINAL POSITION: centered horizontally, positioned on jacket */
+        left: 50%;
         transform: translateX(-50%);
-        bottom: 10px;
+        bottom: 15%; /* Adjust this value to place exactly on the jacket */
+        opacity: 1;
       }
 
       /* Add tagline below name */
       #hero p {
         position: absolute;
-        bottom: 20px;
+        bottom: calc(15% - 40px); /* Position above the name */
         left: 50%;
         transform: translateX(-50%);
         width: 90%;
@@ -341,6 +351,12 @@
         color: rgba(255, 255, 255, 0.95);
         text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
         margin: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease 1.3s; /* Appears after name animation */
+      }
+
+      .name.name-animate + p {
+        opacity: 1;
       }
     }
 
@@ -349,34 +365,42 @@
       #hero {
         min-height: 80vh;
         background-image: url("st22.jpg");
-        background-position: 75% center; /* Shift even more for very small screens */
+        background-position: 75% 30%; /* Adjusted for smaller screens */
       }
 
       .name {
         font-size: 1.9rem;
-        bottom: 50px;
+        bottom: 12%; /* Adjust for smaller screens */
+      }
+
+      .name.name-animate {
+        bottom: 12%;
       }
 
       #hero p {
+        bottom: calc(12% - 35px);
         font-size: 0.9rem;
-        bottom: 25px;
       }
     }
 
     /* Very small mobile devices (up to 360px) */
     @media (max-width: 360px) {
       #hero {
-        background-position: 80% center; /* Maximum shift for very small screens */
+        background-position: 80% 30%;
       }
 
       .name {
         font-size: 1.7rem;
-        bottom: 45px;
+        bottom: 10%;
+      }
+
+      .name.name-animate {
+        bottom: 10%;
       }
 
       #hero p {
+        bottom: calc(10% - 30px);
         font-size: 0.85rem;
-        bottom: 20px;
       }
     }
 
@@ -385,36 +409,167 @@
       #hero {
         min-height: 100vh;
         padding-top: 60px;
-        background-position: 60% center; /* Adjust for landscape */
+        background-position: 60% 30%;
       }
 
       #hero .container {
         padding-top: 40px;
         padding-bottom: 40px;
-        justify-content: center; /* Center in landscape */
+        justify-content: flex-end;
       }
 
       .name {
-        position: relative;
-        bottom: auto;
-        top: auto;
-        margin-bottom: 10px;
+        bottom: 20%;
+      }
+
+      .name.name-animate {
+        bottom: 20%;
       }
 
       #hero p {
-        position: relative;
-        bottom: auto;
-        top: auto;
+        bottom: calc(20% - 35px);
+      }
+    }
+        /* Mobile view (up to 767px) - UPDATED FOR SPECIFIC JACKET POSITION */
+    @media (max-width: 767px) {
+      #hero {
+        min-height: 85vh;
+        padding-top: 60px;
+        /* Adjusted background position to show jacket clearly */
+        background-image: url("st22.jpg");
+        background-position: 65% 25%; /* Adjusted to center the figure better */
+      }
+
+      #hero::before {
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.2) 0%,
+          rgba(0, 0, 0, 0.1) 40%,
+          rgba(0, 0, 0, 0.4) 70%,
+          rgba(0, 0, 0, 0.6) 100%
+        ); /* Gradient overlay for better text contrast at bottom */
+      }
+
+      #hero .container {
+        padding: 20px 15px;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+        padding-bottom: 30px;
+      }
+
+      /* Name positioned specifically on the jacket */
+      .name {
+        position: absolute;
+        /* START POSITION: off screen to the LEFT */
+        left: -100%;
+        /* FINAL POSITION: On the jacket - adjust these values as needed */
+        bottom: 22%; /* Position on jacket (higher number = higher up) */
+        transform: translateX(0);
+        opacity: 1;
+        text-align: center;
+        font-size: 2.4rem; /* Slightly larger for better visibility */
+        white-space: normal;
+        width: 100%;
+        margin: 0;
+        color: white !important;
+        text-shadow: 
+          0 3px 6px rgba(0, 0, 0, 0.9),
+          0 6px 12px rgba(0, 0, 0, 0.7),
+          0 0 25px rgba(0, 0, 0, 0.6); /* Even stronger shadow */
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        transition: left 1s cubic-bezier(0.4, 0, 0.2, 1), 
+                   bottom 0.5s ease 0.8s;
+        /* Add a subtle background for better readability */
+        padding: 8px 15px;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(3px);
+        border-radius: 5px;
+        max-width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-left: -5%; /* Slight horizontal adjustment */
+      }
+
+      .name.name-animate {
+        /* FINAL POSITION: Adjusted for jacket placement */
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 22%; /* Match the initial bottom value */
+        opacity: 1;
+        margin-left: -5%; /* Keep the horizontal adjustment */
+      }
+
+      /* Add tagline below name */
+      #hero p {
+        position: absolute;
+        bottom: calc(22% - 45px); /* Position above the name */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+        margin: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease 1.3s;
+        font-weight: 600;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 6px 12px;
+        border-radius: 4px;
+        backdrop-filter: blur(2px);
+      }
+
+      .name.name-animate + p {
+        opacity: 1;
       }
     }
 
-  
-   
-     
+    /* Small mobile devices (up to 480px) */
+    @media (max-width: 480px) {
+      #hero {
+        min-height: 80vh;
+        background-position: 70% 25%;
+      }
 
-  
-   
-    
+      .name {
+        font-size: 2rem;
+        bottom: 20%; /* Slightly lower for smaller screens */
+        max-width: 85%;
+      }
+
+      .name.name-animate {
+        bottom: 20%;
+      }
+
+      #hero p {
+        bottom: calc(20% - 40px);
+        font-size: 1rem;
+      }
+    }
+
+    /* Very small mobile devices (up to 360px) */
+    @media (max-width: 360px) {
+      #hero {
+        background-position: 75% 25%;
+      }
+
+      .name {
+        font-size: 1.8rem;
+        bottom: 18%; /* Even lower for very small screens */
+        max-width: 80%;
+      }
+
+      .name.name-animate {
+        bottom: 18%;
+      }
+
+      #hero p {
+        bottom: calc(18% - 35px);
+        font-size: 0.9rem;
+      }
+    }
 
     .project-list {
       display: grid;
@@ -812,6 +967,41 @@
         color: white;
       }
     }
+        /* Podcast button styles */
+    .btn .fa-podcast,
+    .btn .fa-spotify,
+    .btn .fa-apple {
+      margin-right: 8px;
+    }
+
+    /* Optional: Add a badge to highlight the podcast */
+    .project .podcast-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #1DB954, #1ED760);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    /* Make podcast image stand out a bit */
+    .project img[alt*="Podcast"] {
+      border: 3px solid #1DB954;
+    }
+
+    /* Responsive adjustments for podcast buttons */
+    @media (max-width: 480px) {
+      .project-links {
+        flex-direction: column;
+      }
+      
+      .project-links .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
 
     /* Removed duplicate header/hero background blocks added earlier to keep styles clean */
   
@@ -857,11 +1047,35 @@
   </section>
 
   <section id="projects" class="fade-in-section">
+      <section id="projects" class="fade-in-section">
     <div class="container">
       <h2>Projects</h2>
       <p>Selected projects and achievements showcase my growth and commitment to excellence.</p>
-      <div class="project-list"></div>
+      <div class="project-list">
+        
+        <!-- Podcast Project -->
+        <div class="project zoom-on-hover">
+          <img src="podcast1.jpg" alt="Empowerment Stories Podcast Cover">
+          <div class="meta">
+            <h3>Empowerment Stories Podcast</h3>
+            <p>An English-language podcast focused on empowerment and storytelling, encouraging young Afghan women to stay hopeful and resilient.</p>
+            <p><strong>Role:</strong> Creator & Host</p>
+            <p><strong>Topics:</strong> Education, Leadership, Women's Empowerment</p>
+            <div class="project-links" style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px;">
+              <a href="https://riverside.fm/shared/exported-clip/3321555303515f355f6f" target="_blank" class="btn" style="background: linear-gradient(90deg, #1DB954, #1ED760); color: white;">
+                <i class="fas fa-podcast"></i> Listen Now
+              </a>
+              
+              
+            </div>
+          </div>
+        </div>
+        
+        <!-- You can add other projects here or they can be added dynamically -->
+        
+      </div>
     </div>
+  </section>
   </section>
 
   
@@ -934,7 +1148,7 @@
       <div class="project zoom-on-hover">
         <img src="Freshta Nazari-certificate.jpg" alt="Freshta Nazari Certificate">
         <div class="meta">
-          <h3>Freshta Nazari Certificate</h3>
+          <h3>Youth Voice Network</h3>
           <p class="meta">Certificate image.</p>
           <p style="margin-top:8px;">
             <button class="btn open-cert-btn"
@@ -979,7 +1193,7 @@
       <div class="project zoom-on-hover">
         <img src="photo_2025-04-16_23-10-06.jpg" alt="Photograph">
         <div class="meta">
-          <h3>Photograph</h3>
+          <h3>Girls for Girls</h3>
           <p class="meta">Image file.</p>
           <p style="margin-top:8px;">
             <button class="btn open-cert-btn"
@@ -993,7 +1207,8 @@
 
       <!-- PDF Certificates -->
       <div class="project zoom-on-hover">
-        <h3 style="color:#667eea;">Freshta Nazari (Prow)</h3>
+        <h3 style="color:#667eea;"> ONLINE
+WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
         <p class="meta">Certificate document.</p>
         <p style="margin-top:8px;">
           <button class="btn open-cert-btn"
@@ -1230,6 +1445,38 @@
         if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
     })();
+        // Mobile-specific animation for name positioning
+    document.addEventListener('DOMContentLoaded', () => {
+      const nameEl = document.querySelector('.name');
+      const hero = document.getElementById('hero');
+      const isMobile = window.innerWidth <= 767;
+      
+      if (!nameEl || !hero) return;
+      
+      if (isMobile) {
+        // For mobile: set initial position (off-screen left)
+        nameEl.style.left = '-100%';
+        
+        // Set final position based on screen size
+        if (window.innerWidth <= 360) {
+          nameEl.style.bottom = '18%';
+        } else if (window.innerWidth <= 480) {
+          nameEl.style.bottom = '20%';
+        } else {
+          nameEl.style.bottom = '22%';
+        }
+        
+        // Trigger animation
+        setTimeout(() => {
+          nameEl.classList.add('name-animate');
+        }, 400);
+      } else {
+        // Desktop/Tablet animation
+        setTimeout(() => {
+          nameEl.classList.add('name-animate');
+        }, 200);
+      }
+    });
     
   </script>
 
