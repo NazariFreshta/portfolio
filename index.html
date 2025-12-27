@@ -404,6 +404,52 @@
       }
     }
 
+    /* About section - two column layout with image on the left */
+    .about-inner {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 18px;
+    }
+
+    .about-image {
+      flex: 0 0 320px;
+      max-width: 40%;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 12px 30px rgba(18, 38, 63, 0.12);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .about-text {
+      flex: 1 1 60%;
+      text-align: left;
+    }
+
+    .about-text p {
+      color: #333;
+      font-size: 1.03rem;
+      line-height: 1.8;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 767px) {
+      .about-inner {
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+      }
+      .about-image { max-width: 220px; width: 60%; }
+      .about-text { width: 100%; text-align: center; }
+      .about-text p { font-size: 0.98rem; }
+    }
+
     /* Landscape mode for mobile */
     @media (max-height: 600px) and (max-width: 1024px) {
       #hero {
@@ -1042,7 +1088,16 @@
   <section id="about" class="fade-in-section">
     <div class="container">
       <h2>About Me</h2>
-      <p>I am a passionate and determined learner from Afghanistan with a deep interest in leadership, communication, and social impact. Growing up in an environment where access to education—especially for women—remains a challenge, I have learned to see knowledge as both a privilege and a form of empowerment. Over the past few years, I have completed numerous online courses in leadership, communication, and even finance, which have strengthened my ability to guide others and think critically about real-world challenges. Beyond academics, I have volunteered as an English teacher for Afghan girls, an experience that not only deepened my sense of responsibility but also showed me the transformative power of education. I also created an English-language podcast centered on empowerment and storytelling, encouraging young Afghan women to stay hopeful and resilient. My long-term goal is to pursue a degree that equips me to lead meaningful change—by combining curiosity, compassion, and strategy to create opportunities where they are most needed.</p>
+      <div class="about-inner">
+        <div class="about-image">
+          <img src="profile.jpg" alt="Freshta Nazari">
+        </div>
+        <div class="about-text">
+          <p>I am a passionate and determined learner from Afghanistan with a deep interest in leadership, communication, and social impact. Growing up in an environment where access to education—especially for women—remains a challenge, I have learned to see knowledge as both a privilege and a form of empowerment.</p>
+          <p>Over the past few years, I have completed numerous online courses in leadership, communication, and even finance, which have strengthened my ability to guide others and think critically about real-world challenges. Beyond academics, I have volunteered as an English teacher for Afghan girls—an experience that deepened my sense of responsibility and showed me the transformative power of education.</p>
+          <p>I also created an English-language podcast centered on empowerment and storytelling, encouraging young Afghan women to stay hopeful and resilient. My long-term goal is to pursue a degree that equips me to lead meaningful change by combining curiosity, compassion, and strategy to create opportunities where they are most needed.</p>
+        </div>
+      </div>
     </div>
   </section>
 
