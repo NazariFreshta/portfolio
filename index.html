@@ -156,79 +156,14 @@
     }
 
         /* Hero Section - Updated for all screen sizes */
-    #hero {
-      background-image: url("st2.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding-top: 80px;
-      overflow: hidden;
-    }
+   
 
-    /* Add overlay for better text readability */
-    #hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.4); /* Dark overlay */
-      z-index: 1;
-    }
+  
 
-    #hero .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 20px;
-      width: 100%;
-      position: relative;
-      z-index: 2; /* Bring content above overlay */
-      padding: 20px;
-    }
+   
 
-    #hero h2 {
-      font-size: 3.5rem;
-      margin-bottom: 10px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-      color: white;
-    }
-
-    #hero p {
-      font-size: 1.4rem;
-      color: rgba(255, 255, 255, 0.95);
-      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-      max-width: 600px;
-    }
-
-    /* Name animation - fixed for all screen sizes */
-    .name {
-      color: white !important;
-      font-weight: 700;
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      line-height: 1.1;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      transform: translateX(100px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-      text-align: center;
-      width: 100%;
-    }
-
-    .name.name-animate {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
+   
+    
     /* Tablet view (768px - 1024px) */
     @media (min-width: 768px) and (max-width: 1024px) {
       #hero {
@@ -257,68 +192,153 @@
         font-size: clamp(2.8rem, 6vw, 4rem);
       }
     }
+        /* Hero Section - Updated for all screen sizes */
+    #hero {
+      background-image: url("st2.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding-top: 80px;
+      overflow: hidden;
+    }
 
-    /* Mobile view (up to 767px) */
+    /* Add overlay for better text readability */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3); /* Lighter overlay */
+      z-index: 1;
+    }
+
+    #hero .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      width: 100%;
+      position: relative;
+      z-index: 2; /* Bring content above overlay */
+      padding: 20px;
+    }
+
+    /* Name styling - desktop/tablet */
+    .name {
+      position: absolute;
+      top: 50%;
+      left: 130%;
+      transform: translateY(-50%);
+      color: white !important; /* Force white color */
+      font-weight: 700;
+      font-size: clamp(2rem, 6vw, 4.25rem);
+      line-height: 1;
+      opacity: 0;
+      transition: left 0.9s cubic-bezier(.2,.9,.2,1), opacity 0.6s ease, transform 0.6s ease;
+      will-change: left, opacity, transform;
+      z-index: 3;
+      white-space: nowrap;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* final position: centered but slightly to the right */
+    .name.name-animate {
+      left: 55%; /* Adjusted to be more to the right */
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+
+    /* Tablet view (768px - 1024px) */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      #hero {
+        min-height: 90vh;
+        padding-top: 70px;
+      }
+
+      #hero::before {
+        background: rgba(0, 0, 0, 0.2); /* Very light overlay for tablets */
+      }
+
+      #hero .container {
+        padding: 40px;
+      }
+
+      .name {
+        left: 55%;
+        transform: translate(-50%, -50%);
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+      }
+      
+      .name.name-animate {
+        left: 55%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    /* Mobile view (up to 767px) - UPDATED */
     @media (max-width: 767px) {
       #hero {
         min-height: 85vh;
         padding-top: 60px;
-        background-position: center 20%; /* Adjust background for mobile */
+        /* Shift background to the right to show full figure */
+        background-position: 70% center;
       }
 
       #hero::before {
-        background: rgba(0, 0, 0, 0.5); /* Darker overlay for mobile readability */
+        background: rgba(0, 0, 0, 0.2); /* Very light overlay */
       }
 
       #hero .container {
         padding: 20px 15px;
-        gap: 15px;
+        flex-direction: column;
+        justify-content: flex-end; /* Push content to bottom */
+        height: 100%;
+        padding-bottom: 60px; /* Space from bottom */
       }
 
-      #hero h2 {
-        font-size: 2.2rem;
-        margin-bottom: 8px;
-      }
-
-      #hero p {
-        font-size: 1.1rem;
-        max-width: 100%;
-        padding: 0 10px;
-      }
-
+      /* Name at the bottom in mobile view */
       .name {
-        position: static;
-        transform: none;
+        position: absolute;
+        top: auto;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
         opacity: 1;
         text-align: center;
-        display: block;
-        margin: 0 auto 15px auto;
         font-size: 2.2rem;
-        transform: translateX(0) !important;
+        white-space: normal;
+        width: 90%;
+        margin: 0;
+        color: white !important;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
       }
 
       .name.name-animate {
-        transform: translateX(0) !important;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 40px;
       }
 
-      /* Optional: Add a call-to-action button */
-      .hero-cta {
-        margin-top: 20px;
-      }
-      
-      .hero-cta .btn {
-        background: linear-gradient(90deg, #FA48AE, #2CE2D1);
-        color: white;
-        padding: 12px 24px;
+      /* Add tagline below name */
+      #hero p {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
         font-size: 1rem;
-        border-radius: 8px;
-        text-decoration: none;
-        display: inline-block;
-        transition: transform 0.3s ease;
-      }
-      
-      .hero-cta .btn:hover {
-        transform: translateY(-3px);
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+        margin: 0;
       }
     }
 
@@ -326,18 +346,34 @@
     @media (max-width: 480px) {
       #hero {
         min-height: 80vh;
-      }
-
-      #hero h2 {
-        font-size: 1.8rem;
-      }
-
-      #hero p {
-        font-size: 1rem;
+        background-position: 75% center; /* Shift even more for very small screens */
       }
 
       .name {
         font-size: 1.9rem;
+        bottom: 50px;
+      }
+
+      #hero p {
+        font-size: 0.9rem;
+        bottom: 25px;
+      }
+    }
+
+    /* Very small mobile devices (up to 360px) */
+    @media (max-width: 360px) {
+      #hero {
+        background-position: 80% center; /* Maximum shift for very small screens */
+      }
+
+      .name {
+        font-size: 1.7rem;
+        bottom: 45px;
+      }
+
+      #hero p {
+        font-size: 0.85rem;
+        bottom: 20px;
       }
     }
 
@@ -346,13 +382,36 @@
       #hero {
         min-height: 100vh;
         padding-top: 60px;
+        background-position: 60% center; /* Adjust for landscape */
       }
 
       #hero .container {
         padding-top: 40px;
         padding-bottom: 40px;
+        justify-content: center; /* Center in landscape */
+      }
+
+      .name {
+        position: relative;
+        bottom: auto;
+        top: auto;
+        margin-bottom: 10px;
+      }
+
+      #hero p {
+        position: relative;
+        bottom: auto;
+        top: auto;
       }
     }
+
+  
+   
+     
+
+  
+   
+    
 
     .project-list {
       display: grid;
@@ -1174,6 +1233,7 @@
 </body>
 
 </html>
+
 
 
 
