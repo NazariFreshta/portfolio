@@ -304,7 +304,7 @@
         flex-direction: column;
         justify-content: flex-end;
         height: 100%;
-        padding-bottom: 40px; /* Reduced padding for better jacket positioning */
+        padding-bottom: 12px; /* Reduced padding so name can sit lower */
       }
 
       /* Name at the BOTTOM on the JACKET area in mobile view */
@@ -313,7 +313,7 @@
         /* START POSITION: off screen to the LEFT */
         left: -100%;
         /* FINAL POSITION: centered at bottom on jacket */
-        bottom: 5%; /* Adjust this to place on jacket area */
+        bottom: 0%; /* Adjust this to place on jacket area */
         transform: translateX(0);
         opacity: 1;
         text-align: center;
@@ -336,7 +336,7 @@
         /* FINAL POSITION: centered horizontally, positioned on jacket */
         left: 50%;
         transform: translateX(-50%);
-        bottom: 15%; /* Adjust this value to place exactly on the jacket */
+        bottom: 1%; /* Adjust this value to place exactly on the jacket */
         opacity: 1;
       }
 
@@ -460,7 +460,7 @@
 
       #hero .container {
         padding-top: 40px;
-        padding-bottom: 40px;
+        padding-bottom: 12px;
         justify-content: flex-end;
       }
 
@@ -504,19 +504,19 @@
         padding-bottom: 30px;
       }
 
-      /* Name positioned specifically on the jacket */
+      /* Name positioned at bottom for mobile overview */
       .name {
         position: absolute;
-        /* START POSITION: off screen to the LEFT */
-        left: -100%;
-        /* FINAL POSITION: On the jacket - adjust these values as needed */
-        bottom: 22%; /* Position on jacket (higher number = higher up) */
-        transform: translateX(0);
+        /* Place near the bottom of the viewport */
+        bottom: 12px;
+        /* Slightly left of center */
+        left: 45%;
+        transform: translateX(-50%);
         opacity: 1;
         text-align: center;
-        font-size: 2.4rem; /* Slightly larger for better visibility */
+        font-size: 2.2rem;
         white-space: normal;
-        width: 100%;
+        width: auto;
         margin: 0;
         color: white !important;
         text-shadow: 
@@ -529,39 +529,35 @@
                    bottom 0.5s ease 0.8s;
         /* Add a subtle background for better readability */
         padding: 8px 15px;
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.28);
         backdrop-filter: blur(3px);
         border-radius: 5px;
         max-width: 90%;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-left: -5%; /* Slight horizontal adjustment */
+        /* keep centered around left:45% */
       }
 
       .name.name-animate {
-        /* FINAL POSITION: Adjusted for jacket placement */
-        left: 50%;
+        left: 45%;
         transform: translateX(-50%);
-        bottom: 22%; /* Match the initial bottom value */
+        bottom: 12px;
         opacity: 1;
-        margin-left: -5%; /* Keep the horizontal adjustment */
       }
 
-      /* Add tagline below name */
+      /* Tagline positioned above the name */
       #hero p {
         position: absolute;
-        bottom: calc(22% - 45px); /* Position above the name */
-        left: 50%;
+        bottom: calc(40px + 52px); /* place above the name */
+        left: 45%;
         transform: translateX(-50%);
         width: 90%;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         color: rgba(255, 255, 255, 0.95);
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
         margin: 0;
         opacity: 0;
-        transition: opacity 0.5s ease 1.3s;
+        transition: opacity 0.45s ease 0.9s;
         font-weight: 600;
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.22);
         padding: 6px 12px;
         border-radius: 4px;
         backdrop-filter: blur(2px);
@@ -715,6 +711,36 @@
       box-shadow: 0 12px 30px rgba(18, 38, 63, 0.16);
     }
 
+    /* Strong mobile override: ensure the name starts off-screen left and slides into bottom-left */
+    @media (max-width: 767px) {
+      #hero { position: relative; }
+      .name {
+        position: absolute !important;
+        left: -120% !important; /* start off-screen */
+        bottom: 12px !important; /* final baseline (very close to bottom) */
+        transform: translateX(0) !important;
+        opacity: 0;
+        transition: left 0.7s cubic-bezier(.2,.9,.2,1), opacity 0.45s ease, transform 0.45s ease;
+        z-index: 30 !important;
+        padding: 6px 12px;
+        border-radius: 6px;
+        background: rgba(0,0,0,0.28);
+      }
+      .name.name-animate {
+        left: 45% !important; /* slight left of center */
+        transform: translateX(-50%) !important;
+        opacity: 1 !important;
+      }
+      #hero p {
+        bottom: calc(12px + 56px) !important;
+        left: 45% !important;
+        transform: translateX(-50%) !important;
+        opacity: 0;
+        transition: opacity 0.45s ease 0.25s;
+      }
+      .name.name-animate + p { opacity: 1 !important; }
+    }
+
     .modal {
       display: none;
       position: fixed;
@@ -851,20 +877,31 @@
       opacity: 1;
     }
 
-    /* Small-screen fallback: keep name centered and in flow */
+    /* Small-screen: position name at bottom (slightly left) for mobile overview */
     @media (max-width: 767px) {
       .name {
-        position: static;
-        transform: none;
-        left: auto;
-        top: auto;
+        position: absolute;
+        bottom: 40px;
+        left: 45%;
+        transform: translateX(-50%);
         opacity: 1;
         text-align: center;
-        display: block;
-        margin: 0 auto 8px auto;
         font-size: 2rem;
+        white-space: normal;
+        width: auto;
+        margin: 0;
+        padding: 6px 12px;
+        background: rgba(0,0,0,0.28);
+        border-radius: 6px;
+        color: white !important;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.6);
       }
-      .name.name-animate { left: auto; transform: none; }
+      .name.name-animate {
+        left: 45%;
+        transform: translateX(-50%);
+        bottom: 40px;
+        opacity: 1;
+      }
     }
 
     @media (max-width: 767px) {
@@ -1543,15 +1580,15 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
             <div class="exam-details">
               <div class="detail-item">
                 <span class="detail-label">Overall Score:</span>
-                <span class="detail-value score-highlight">108/120</span>
+                <span class="detail-value score-highlight">107/120</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">Reading:</span>
-                <span class="detail-value">28/30</span>
+                <span class="detail-value">27/30</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">Listening:</span>
-                <span class="detail-value">29/30</span>
+                <span class="detail-value">28/30</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">Speaking:</span>
@@ -1559,7 +1596,7 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
               </div>
               <div class="detail-item">
                 <span class="detail-label">Writing:</span>
-                <span class="detail-value">26/30</span>
+                <span class="detail-value">27/30</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">CEFR Level:</span>
@@ -1592,23 +1629,23 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
             <div class="exam-details">
               <div class="detail-item">
                 <span class="detail-label">Overall Score:</span>
-                <span class="detail-value score-highlight">135/160</span>
+                <span class="detail-value score-highlight">125/160</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">Literacy:</span>
-                <span class="detail-value">140</span>
+                <span class="detail-value">120</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">Conversation:</span>
-                <span class="detail-value">130</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Comprehension:</span>
                 <span class="detail-value">135</span>
               </div>
               <div class="detail-item">
-                <span class="detail-label">Production:</span>
+                <span class="detail-label">Comprehension:</span>
                 <span class="detail-value">130</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Production:</span>
+                <span class="detail-value">125</span>
               </div>
               <div class="detail-item">
                 <span class="detail-label">CEFR Level:</span>
@@ -1689,7 +1726,6 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=freshtanzri83@gmail.com" target="_blank" rel="noopener" title="Send Email"><i class="fas fa-envelope"></i></a>
         <a href="https://www.linkedin.com/in/freshtanazari/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/yourusername" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </section>
@@ -1698,7 +1734,7 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
     <div class="container">
       <p>&copy; 2025 Freshta Nazari. All rights reserved.</p>
       <p class="footer-credit">Designed & Built with <i class="fas fa-heart" style="color: #ff6b6b;"></i> by Freshta</p>
-      <p style="font-size: 0.8rem; margin-top: 10px; color: #999;">Based in Afghanistan | Passionate about Education, Leadership & Technology</p>
+      <p style="font-size: 0.8rem; margin-top: 10px; color: #999;">Based in Afghanistan | Passionate about Education, Leadership & Psychology</p>
     </div>
   </footer>
 
