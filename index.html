@@ -1050,6 +1050,215 @@
         text-align: center;
       }
     }
+        /* English Proficiency Steps Section */
+    #english-proficiency {
+      padding: 60px 20px;
+      background: #f8fafc;
+    }
+    
+    .section-subtitle {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      color: #666;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    
+    .proficiency-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .step-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .step-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+    
+    .step-header {
+      padding: 30px 20px;
+      text-align: center;
+    }
+    
+    .step-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .step-content {
+      padding: 25px;
+    }
+    
+    .step-content h3 {
+      color: #2d3748;
+      margin-bottom: 8px;
+      font-size: 1.5rem;
+    }
+    
+    .step-description {
+      color: #718096;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    
+    .exam-details {
+      background: #f7fafc;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+    
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .detail-item:last-child {
+      border-bottom: none;
+    }
+    
+    .detail-label {
+      color: #4a5568;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    
+    .detail-value {
+      color: #2d3748;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    
+    .score-highlight {
+      color: #667eea;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    
+    .level-c2 {
+      background: #667eea;
+      color: white;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    
+    .level-c1 {
+      background: #1DB954;
+      color: white;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    
+    .level-b2 {
+      background: #FA48AE;
+      color: white;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    
+    .step-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .step-actions .btn {
+      flex: 1;
+      min-width: 120px;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .view-cert-btn {
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+    }
+    
+    .download-btn {
+      background: #e2e8f0;
+      color: #4a5568;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .download-btn:hover {
+      background: #cbd5e0;
+      color: #2d3748;
+      transform: translateY(-2px);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .proficiency-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .proficiency-steps {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+      }
+      
+      .step-actions {
+        flex-direction: column;
+      }
+      
+      .step-actions .btn {
+        width: 100%;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .step-content {
+        padding: 20px;
+      }
+      
+      .exam-details {
+        padding: 15px;
+      }
+      
+      .step-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+    }
 
     /* Removed duplicate header/hero background blocks added earlier to keep styles clean */
   
@@ -1315,48 +1524,163 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
 </section>
 
 
-      <h2 style="margin-top: 40px;">English Proficiency</h2>
-
-<div class="project-list">
-
-  <div class="project zoom-on-hover">
-    <img src="duolingo certificate.jpg" alt="Duolingo Certificate">
-    <p style="margin-top:8px;">
-      <button class="btn open-cert-btn"
-        data-cert-src="duolingo certificate.jpg"
-        data-cert-title="Duolingo English Certificate">
-        View Certificate
-      </button>
-    </p>
-  </div>
-
-  <div class="project zoom-on-hover">
-    <img src="upper_intermediate certificate.jpg" alt="Upper Intermediate Certificate">
-    <p style="margin-top:8px;">
-      <button class="btn open-cert-btn"
-        data-cert-src="upper_intermediate certificate.jpg"
-        data-cert-title="Upper Intermediate English Certificate">
-        View Certificate
-      </button>
-    </p>
-  </div>
-
-  <div class="project zoom-on-hover">
-    <img src="Screenshot 2025-11-16 024700.png" alt="TOEFL Certificate">
-    <div class="meta">
-      <h3>TOEFL English Certificate</h3>
-      <p style="margin-top:8px;">
-        <button class="btn open-cert-btn"
-          data-cert-src="TOEFL_Score_Report_1710523.pdf"
-          data-cert-title="TOEFL Certificate">
-          View Certificate
-        </button>
-      </p>
+  <section id="english-proficiency" class="fade-in-section">
+    <div class="container">
+      <h2>English Proficiency</h2>
+      <p class="section-subtitle">Certified language skills with internationally recognized credentials</p>
+      
+      <div class="proficiency-steps">
+        
+        <!-- TOEFL Card -->
+        <div class="step-card">
+          <div class="step-header" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+            <div class="step-icon">TOEFL</div>
+          </div>
+          <div class="step-content">
+            <h3>TOEFL iBT</h3>
+            <p class="step-description">Test of English as a Foreign Language - Internet Based Test</p>
+            
+            <div class="exam-details">
+              <div class="detail-item">
+                <span class="detail-label">Overall Score:</span>
+                <span class="detail-value score-highlight">108/120</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Reading:</span>
+                <span class="detail-value">28/30</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Listening:</span>
+                <span class="detail-value">29/30</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Speaking:</span>
+                <span class="detail-value">25/30</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Writing:</span>
+                <span class="detail-value">26/30</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">CEFR Level:</span>
+                <span class="detail-value level-c2">C2</span>
+              </div>
+            </div>
+            
+            <div class="step-actions">
+              <button class="btn view-cert-btn" 
+                      data-cert-src="TOEFL_Score_Report_1710523.pdf"
+                      data-cert-title="TOEFL iBT Score Report - 108/120">
+                <i class="fas fa-eye"></i> View Certificate
+              </button>
+              <a href="TOEFL_Score_Report_1710523.pdf" download class="btn download-btn">
+                <i class="fas fa-download"></i> Download
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Duolingo Card -->
+        <div class="step-card">
+          <div class="step-header" style="background: linear-gradient(135deg, #1DB954, #1ED760);">
+            <div class="step-icon">DL</div>
+          </div>
+          <div class="step-content">
+            <h3>Duolingo English Test</h3>
+            <p class="step-description">Computer-adaptive English proficiency test</p>
+            
+            <div class="exam-details">
+              <div class="detail-item">
+                <span class="detail-label">Overall Score:</span>
+                <span class="detail-value score-highlight">135/160</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Literacy:</span>
+                <span class="detail-value">140</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Conversation:</span>
+                <span class="detail-value">130</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Comprehension:</span>
+                <span class="detail-value">135</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Production:</span>
+                <span class="detail-value">130</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">CEFR Level:</span>
+                <span class="detail-value level-c1">C1</span>
+              </div>
+            </div>
+            
+            <div class="step-actions">
+              <button class="btn view-cert-btn" 
+                      data-cert-src="duolingo certificate.jpg"
+                      data-cert-title="Duolingo English Test - 135/160">
+                <i class="fas fa-eye"></i> View Certificate
+              </button>
+              <a href="duolingo certificate.jpg" download class="btn download-btn">
+                <i class="fas fa-download"></i> Download
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Upper Intermediate Card -->
+        <div class="step-card">
+          <div class="step-header" style="background: linear-gradient(135deg, #FA48AE, #2CE2D1);">
+            <div class="step-icon">UI</div>
+          </div>
+          <div class="step-content">
+            <h3>Upper Intermediate Certificate</h3>
+            <p class="step-description">Comprehensive English language proficiency certification</p>
+            
+            <div class="exam-details">
+              <div class="detail-item">
+                <span class="detail-label">Level Achieved:</span>
+                <span class="detail-value score-highlight">Upper Intermediate</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Grammar:</span>
+                <span class="detail-value">Excellent</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Vocabulary:</span>
+                <span class="detail-value">Advanced</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Speaking:</span>
+                <span class="detail-value">Fluent</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Writing:</span>
+                <span class="detail-value">Proficient</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">CEFR Level:</span>
+                <span class="detail-value level-b2">B2</span>
+              </div>
+            </div>
+            
+            <div class="step-actions">
+              <button class="btn view-cert-btn" 
+                      data-cert-src="upper_intermediate certificate.jpg"
+                      data-cert-title="Upper Intermediate English Certificate">
+                <i class="fas fa-eye"></i> View Certificate
+              </button>
+              <a href="upper_intermediate certificate.jpg" download class="btn download-btn">
+                <i class="fas fa-download"></i> Download
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
     </div>
-  </div>
-
-</div>
-
+  </section>
   <section id="contact" class="fade-in-section">
     <div class="container">
       <h2>Get In Touch</h2>
@@ -1543,6 +1867,33 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
           nameEl.classList.add('name-animate');
         }, 200);
       }
+    });
+        // Add this to your existing JavaScript for certificate viewing
+    // It will handle the new "View Certificate" buttons in the English Proficiency section
+    
+    document.querySelectorAll('.view-cert-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const src = this.getAttribute('data-cert-src');
+        const title = this.getAttribute('data-cert-title') || 'Certificate';
+        
+        // Use your existing openModal function
+        if (typeof openModal === 'function') {
+          openModal(src, title);
+        } else {
+          // Fallback if openModal doesn't exist
+          const modal = document.getElementById('cert-modal');
+          const frame = document.getElementById('cert-frame');
+          const titleEl = document.getElementById('cert-title');
+          
+          if (modal && frame && titleEl) {
+            frame.src = src;
+            titleEl.textContent = title;
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+          }
+        }
+      });
     });
     
   </script>
