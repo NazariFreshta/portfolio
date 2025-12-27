@@ -695,22 +695,24 @@
     }
 
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       background: linear-gradient(90deg, #FA48AE, #2CE2D1);
-      color: #111;
+      color: #fff;
       padding: 10px 16px;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: 600;
       text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 20px rgba(18, 38, 63, 0.12);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.15s ease;
       border: none;
       cursor: pointer;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(18, 38, 63, 0.16);
     }
 
     .modal {
@@ -1090,7 +1092,7 @@
       <h2>About Me</h2>
       <div class="about-inner">
         <div class="about-image">
-          <img src="profile.jpg" alt="Freshta Nazari">
+          <img src="chair.jpeg" alt="Freshta Nazari">
         </div>
         <div class="about-text">
           <p>I am a passionate and determined learner from Afghanistan with a deep interest in leadership, communication, and social impact. Growing up in an environment where access to education—especially for women—remains a challenge, I have learned to see knowledge as both a privilege and a form of empowerment.</p>
@@ -1112,16 +1114,17 @@
         <div class="project zoom-on-hover">
           <img src="podcast1.jpg" alt="Empowerment Stories Podcast Cover">
           <div class="meta">
-            <h3>Empowerment Stories Podcast</h3>
+            <h3>From Silence to Story</h3>
             <p>An English-language podcast focused on empowerment and storytelling, encouraging young Afghan women to stay hopeful and resilient.</p>
             <p><strong>Role:</strong> Creator & Host</p>
             <p><strong>Topics:</strong> Education, Leadership, Women's Empowerment</p>
-            <div class="project-links" style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px;">
-              <a href="https://riverside.fm/shared/exported-clip/3321555303515f355f6f" target="_blank" class="btn" style="background: linear-gradient(90deg, #1DB954, #1ED760); color: white;">
+            <div class="project-links" style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+              <a href="https://riverside.fm/shared/exported-clip/3321555303515f355f6f" target="_blank" class="btn">
                 <i class="fas fa-podcast"></i> Listen Now
               </a>
-              
-              
+              <button class="btn open-cert-btn" data-cert-src="vision2040.jpeg" data-cert-title="Podcast Certificate" style="background: linear-gradient(90deg,#FA48AE,#2CE2D1); color: white;">
+                <i class="fas fa-certificate"></i> View Certificate
+              </button>
             </div>
           </div>
         </div>
