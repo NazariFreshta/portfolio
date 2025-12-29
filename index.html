@@ -1298,6 +1298,612 @@
     }
 
     /* Removed duplicate header/hero background blocks added earlier to keep styles clean */
+        /* ===== PROFESSIONAL PROJECTS SECTION ===== */
+    
+    #projects {
+      padding: 80px 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+    
+    .projects-header {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+    
+    .profile-intro {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid white;
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.15);
+      transition: transform 0.3s ease;
+    }
+    
+    .profile-photo:hover {
+      transform: scale(1.05);
+    }
+    
+    .intro-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .intro-text h2 {
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+    }
+    
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+    
+    /* Projects Grid */
+    .projects-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    
+    /* Project Cards */
+    .project-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .featured-project {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    
+    .project-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, #FA48AE, #2CE2D1);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      z-index: 2;
+      box-shadow: 0 4px 15px rgba(250, 72, 174, 0.3);
+    }
+    
+    /* Project Media */
+    .project-media {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+    }
+    
+    .featured-project .project-media {
+      height: 100%;
+    }
+    
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+    
+    .media-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .project-media:hover .media-overlay {
+      opacity: 1;
+    }
+    
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      background: white;
+      border-radius: 50%;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #667eea;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .play-btn:hover {
+      transform: scale(1.1);
+      background: #667eea;
+      color: white;
+    }
+    
+    /* Project Content */
+    .project-content {
+      padding: 30px;
+    }
+    
+    .featured-project .project-content {
+      padding: 40px;
+    }
+    
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .project-category {
+      background: #e9ecef;
+      color: #667eea;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    
+    .project-date {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .project-title {
+      font-size: 1.5rem;
+      color: #2d3748;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+    
+    .featured-project .project-title {
+      font-size: 1.8rem;
+    }
+    
+    .project-description {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    /* Project Stats */
+    .project-stats {
+      display: flex;
+      gap: 20px;
+      margin: 25px 0;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 12px;
+    }
+    
+    .stat {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .stat-number {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #667eea;
+      line-height: 1;
+    }
+    
+    .stat-label {
+      display: block;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 5px;
+    }
+    
+    /* Tech Tags */
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    
+    .tech-tag {
+      background: #eef2ff;
+      color: #667eea;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    /* Project Actions */
+    .project-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 25px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+    
+    .platform-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .platform-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #f1f3f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .platform-link:hover {
+      transform: translateY(-3px);
+      color: white;
+    }
+    
+    .platform-link:nth-child(1):hover {
+      background: #1DB954;
+    }
+    
+    .platform-link:nth-child(2):hover {
+      background: #000;
+    }
+    
+    .platform-link:nth-child(3):hover {
+      background: #FF0000;
+    }
+    
+    /* Volunteer Cards */
+    .volunteer-card {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .volunteer-media {
+      height: 200px;
+    }
+    
+    .volunteer-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(102, 126, 234, 0.95);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    /* Volunteer Impact */
+    .volunteer-impact {
+      margin: 20px 0;
+      padding: 20px;
+      background: #f0f7ff;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+    }
+    
+    .volunteer-impact h4 {
+      color: #667eea;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    
+    .impact-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .impact-list li {
+      padding: 5px 0;
+      color: #555;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
+    .impact-list li i {
+      color: #1DB954;
+      font-size: 0.9rem;
+      margin-top: 3px;
+    }
+    
+    /* Certificate Preview */
+    .certificate-preview {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      padding: 15px;
+      background: #f9fafb;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+    
+    .cert-thumbnail {
+      position: relative;
+      width: 120px;
+      height: 90px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    
+    .cert-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .cert-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .cert-thumbnail:hover .cert-overlay {
+      opacity: 1;
+    }
+    
+    .btn-view-cert {
+      background: white;
+      color: #667eea;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-view-cert:hover {
+      background: #667eea;
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    .cert-info {
+      flex: 1;
+    }
+    
+    .cert-info h5 {
+      color: #2d3748;
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+    
+    .cert-info p {
+      color: #666;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    
+    .download-link {
+      color: #667eea;
+      font-size: 0.85rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 500;
+    }
+    
+    .download-link:hover {
+      color: #764ba2;
+    }
+    
+    /* Achievement Card */
+    .achievement-card {
+      background: linear-gradient(135deg, #fff8f0 0%, #fff 100%);
+      border: 2px solid #FFD166;
+    }
+    
+    .achievement-header {
+      background: linear-gradient(135deg, #FFD166, #FFB347);
+      padding: 25px;
+      text-align: center;
+      color: white;
+    }
+    
+    .trophy-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .achievement-title {
+      font-size: 1.4rem;
+      margin: 0;
+    }
+    
+    .achievement-content {
+      padding: 25px;
+    }
+    
+    .achievement-details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 20px 0;
+      padding: 20px;
+      background: #fffaf0;
+      border-radius: 12px;
+    }
+    
+    .detail {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .detail-label {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 3px;
+    }
+    
+    .detail-value {
+      font-weight: 600;
+      color: #2d3748;
+    }
+    
+    .certificate-preview.horizontal {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .cert-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    
+    .cert-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .featured-project {
+        grid-template-columns: 1fr;
+      }
+      
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .profile-intro {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-stats {
+        flex-wrap: wrap;
+      }
+      
+      .achievement-details {
+        grid-template-columns: 1fr;
+      }
+      
+      .cert-actions {
+        flex-direction: column;
+      }
+      
+      .cert-actions .btn {
+        width: 100%;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .intro-text h2 {
+        font-size: 2.2rem;
+      }
+      
+      .profile-photo {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .project-content {
+        padding: 20px;
+      }
+      
+      .certificate-preview {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .cert-thumbnail {
+        width: 100%;
+        height: 120px;
+      }
+    }
   
   </style>
 </head>
@@ -1357,44 +1963,223 @@
     </div>
   </section>
 
-  <section id="projects" class="fade-in-section">
-      <section id="projects" class="fade-in-section">
+    <section id="projects" class="fade-in-section">
     <div class="container">
-      <h2>Projects</h2>
-      <p>Selected projects and achievements showcase my growth and commitment to excellence.</p>
-      <div class="project-list">
+      <div class="projects-header">
+        <div class="profile-intro">
+          <div class="intro-text">
+            <h2>Projects & Volunteer Work</h2>
+            <p class="section-subtitle">Combining passion with purpose through meaningful initiatives and community engagement</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="projects-grid">
         
-        <!-- Podcast moved to its own section -->
+        <!-- Volunteer Work 1 -->
+        <div class="project-card volunteer-card">
+          <div class="project-media volunteer-media">
+            <img src="teaching-volunteer.jpg" alt="English Teaching Volunteer" class="project-image">
+            <div class="volunteer-badge">
+              <i class="fas fa-hands-helping"></i> Volunteer Work
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-category">Education</span>
+              <span class="project-date">2022 - 2024</span>
+            </div>
+            <h3 class="project-title">English Teacher for Afghan Girls</h3>
+            <p class="project-description">Volunteered as an English instructor for underprivileged Afghan girls, developing customized lesson plans and creating a supportive learning environment despite challenging circumstances.</p>
+            
+            <div class="volunteer-impact">
+              <h4>Impact & Achievements:</h4>
+              <ul class="impact-list">
+                <li><i class="fas fa-check-circle"></i> Taught 50+ students over 2 years</li>
+                <li><i class="fas fa-check-circle"></i> Improved average test scores by 40%</li>
+                <li><i class="fas fa-check-circle"></i> Developed digital learning materials</li>
+                <li><i class="fas fa-check-circle"></i> Mentored 5 assistant teachers</li>
+              </ul>
+            </div>
+            
+            <div class="certificate-preview">
+              <div class="cert-thumbnail">
+                <img src="english creative thinkers.jpg" alt="Teaching Certificate">
+                <div class="cert-overlay">
+                  <button class="btn btn-view-cert" 
+                          data-cert-src="english creative thinkers.jpg"
+                          data-cert-title="English Teaching Volunteer Certificate">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="cert-info">
+                <h5>Teaching Excellence Certificate</h5>
+                <p>Awarded for outstanding contribution to English education</p>
+                <a href="english creative thinkers.jpg" download class="download-link">
+                  <i class="fas fa-download"></i> Download Certificate
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
         
-        <!-- You can add other projects here or they can be added dynamically -->
+        <!-- Volunteer Work 2 -->
+        <div class="project-card volunteer-card">
+          <div class="project-media volunteer-media">
+            <img src="scarf1.jpeg" alt="Leadership Workshop" class="project-image">
+            <div class="volunteer-badge">
+              <i class="fas fa-users"></i> Community Leadership
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-category">Leadership</span>
+              <span class="project-date">2023 - Present</span>
+            </div>
+            <h3 class="project-title">Youth Leadership Program Coordinator</h3>
+            <p class="project-description">Organized and led leadership workshops for young Afghan women, focusing on communication skills, confidence building, and career planning in collaboration with local NGOs.</p>
+            
+            <div class="volunteer-impact">
+              <h4>Key Responsibilities:</h4>
+              <ul class="impact-list">
+                <li><i class="fas fa-check-circle"></i> Designed curriculum for 12 workshops</li>
+                <li><i class="fas fa-check-circle"></i> Facilitated sessions for 200+ participants</li>
+                <li><i class="fas fa-check-circle"></i> Secured partnerships with 3 local organizations</li>
+                <li><i class="fas fa-check-circle"></i> Managed volunteer team of 10</li>
+              </ul>
+            </div>
+            
+            <div class="certificate-preview">
+              <div class="cert-thumbnail">
+                <img src="HAWA.jpg" alt="Leadership Certificate">
+                <div class="cert-overlay">
+                  <button class="btn btn-view-cert" 
+                          data-cert-src="HAWA.jpg"
+                          data-cert-title="Leadership Program Certificate">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="cert-info">
+                <h5>Leadership Excellence Award</h5>
+                <p>Recognized for outstanding community leadership and mentorship</p>
+                <a href="HAWA.jpg" download class="download-link">
+                  <i class="fas fa-download"></i> Download Certificate
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- MUN Achievement -->
+        <div class="project-card achievement-card">
+          <div class="achievement-header">
+            <div class="trophy-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h3 class="achievement-title">Best Speaker Award - Model UN</h3>
+          </div>
+          <div class="achievement-content">
+            <p>Awarded Best Speaker at the National Model United Nations conference, representing Japan and demonstrating exceptional diplomacy, research, and public speaking skills.</p>
+            
+            <div class="achievement-details">
+              <div class="detail">
+                <span class="detail-label">Conference:</span>
+                <span class="detail-value">National MUN 2023</span>
+              </div>
+              <div class="detail">
+                <span class="detail-label">Country Represented:</span>
+                <span class="detail-value">Japan</span>
+              </div>
+              <div class="detail">
+                <span class="detail-label">Committee:</span>
+                <span class="detail-value">UNESCO</span>
+              </div>
+              <div class="detail">
+                <span class="detail-label">Topic:</span>
+                <span class="detail-value">Education Access in Conflict Zones</span>
+              </div>
+            </div>
+            
+            <div class="certificate-preview horizontal">
+              <img src="best speaker of mun.jpg" alt="Best Speaker MUN Certificate" class="cert-image">
+              <div class="cert-actions">
+                <button class="btn btn-view-cert" 
+                        data-cert-src="best speaker of mun.jpg"
+                        data-cert-title="Best Speaker - Model United Nations">
+                  <i class="fas fa-eye"></i> View Certificate
+                </button>
+                <button class="btn btn-view-cert" 
+                        data-cert-src="delegate of japan.jpg"
+                        data-cert-title="Delegate of Japan - Model UN">
+                  <i class="fas fa-award"></i> Delegate Certificate
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         
       </div>
     </div>
-  </section>
   </section>
 
   <section id="podcast" class="fade-in-section">
     <div class="container">
       <h2>Podcast</h2>
-      <p>Listen to selected episodes from my podcast "From Silence to Story".</p>
-      <div class="project-list">
-        <div class="project zoom-on-hover">
-          <img src="podcast1.jpg" alt="From Silence to Story Cover">
-          <div class="meta">
-            <h3>From Silence to Story</h3>
-            <p>An English-language podcast focused on empowerment and storytelling, encouraging young Afghan women to stay hopeful and resilient.</p>
-            <p><strong>Role:</strong> Creator & Host</p>
-            <div class="project-links" style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
-              <a href="https://riverside.fm/shared/exported-clip/3321555303515f355f6f" target="_blank" class="btn">
-                <i class="fas fa-podcast"></i> Listen Now
-              </a>
-              <button class="btn open-cert-btn" data-cert-src="vision2040.jpeg" data-cert-title="Podcast Certificate">
-                <i class="fas fa-certificate"></i> View Certificate
+             <!-- Podcast Project -->
+        <div class="project-card featured-project">
+          <div class="project-badge">🎤 Featured Project</div>
+          <div class="project-media">
+            <img src="podcast1.jpg" alt="Empowerment Stories Podcast" class="project-image">
+            <div class="media-overlay">
+              <button class="play-btn" aria-label="Play introduction">
+                <i class="fas fa-play"></i>
               </button>
             </div>
           </div>
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-category">Podcast</span>
+              <span class="project-date">2023 - Present</span>
+            </div>
+            <h3 class="project-title">Empowerment Stories Podcast</h3>
+            <p class="project-description">An English-language podcast creating a platform for Afghan women to share stories of resilience, education, and empowerment. Each episode features inspiring conversations about overcoming challenges.</p>
+            
+            <div class="project-stats">
+              <div class="stat">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Episodes</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Listeners</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">4.8</span>
+                <span class="stat-label">Rating</span>
+              </div>
+            </div>
+            
+            <div class="project-tech">
+              <span class="tech-tag">Storytelling</span>
+              <span class="tech-tag">Interviewing</span>
+              <span class="tech-tag">Editing</span>
+              <span class="tech-tag">Public Speaking</span>
+            </div>
+            
+            <div class="project-actions">
+              <a href="https://riverside.fm/shared/exported-clip/3321555303515f355f6f" target="_blank" class="btn btn-primary">
+                <i class="fas fa-podcast"></i> Listen Now
+              </a>
+              <div class="platform-links">
+                <a href="#" class="platform-link" title="Spotify"><i class="fab fa-spotify"></i></a>
+                <a href="#" class="platform-link" title="Apple Podcasts"><i class="fab fa-apple"></i></a>
+                <a href="#" class="platform-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
     </div>
   </section>
 
