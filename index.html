@@ -2016,9 +2016,7 @@
               <div class="cert-info">
                 <h5>Teaching Excellence Certificate</h5>
                 <p>Awarded for outstanding contribution to English education</p>
-                <a href="english creative thinkers.jpg" download class="download-link">
-                  <i class="fas fa-download"></i> Download Certificate
-                </a>
+                <!-- download removed; viewers can view certificate only -->
               </div>
             </div>
             <div class="certificate-preview">
@@ -2036,9 +2034,7 @@
               <div class="cert-info">
                 <h5>Teaching Excellence Certificate</h5>
                 <p>Awarded for outstanding contribution to English education</p>
-                <a href="english teacher2.pdf" download class="download-link">
-                  <i class="fas fa-download"></i> Download Certificate
-                </a>
+                <!-- download removed; viewers can view certificate only -->
               </div>
             </div>
           </div>
@@ -2134,8 +2130,8 @@
             
             <div class="project-stats">
               <div class="stat">
-                <span class="stat-number">15+</span>
-                <span class="stat-label">Episodes</span>
+                <span class="stat-number">1</span>
+                <span class="stat-label">Episode</span>
               </div>
               <div class="stat">
                 <span class="stat-number">500+</span>
@@ -2155,13 +2151,15 @@
             </div>
             
             <div class="project-actions">
-              <a href="https://riverside.fm/shared/exported-clip/3321555303515f355f6f" target="_blank" class="btn btn-primary">
-                <i class="fas fa-podcast"></i> Listen Now
-              </a>
+                <a href="https://riverside.fm/shared/exported-clip/3321555303515f355f6f" target="_blank" class="btn btn-primary">
+                  <i class="fas fa-podcast"></i> Listen Now
+                </a>
+                <button class="btn open-cert-btn" data-cert-src="podcast1.jpg" data-cert-title="Podcast Certificate">
+                  <i class="fas fa-eye"></i> View Certificate
+                </button>
               <div class="platform-links">
                 <a href="#" class="platform-link" title="Spotify"><i class="fab fa-spotify"></i></a>
                 <a href="#" class="platform-link" title="Apple Podcasts"><i class="fab fa-apple"></i></a>
-                <a href="#" class="platform-link" title="YouTube"><i class="fab fa-youtube"></i></a>
               </div>
             </div>
           </div>
@@ -2387,9 +2385,6 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
                       data-cert-title="TOEFL iBT Score Report - 108/120">
                 <i class="fas fa-eye"></i> View Certificate
               </button>
-              <a href="TOEFL_Score_Report_1710523.pdf" download class="btn download-btn">
-                <i class="fas fa-download"></i> Download
-              </a>
             </div>
           </div>
         </div>
@@ -2436,9 +2431,6 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
                       data-cert-title="Duolingo English Test - 135/160">
                 <i class="fas fa-eye"></i> View Certificate
               </button>
-              <a href="duolingo certificate.jpg" download class="btn download-btn">
-                <i class="fas fa-download"></i> Download
-              </a>
             </div>
           </div>
         </div>
@@ -2485,9 +2477,6 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
                       data-cert-title="Upper Intermediate English Certificate">
                 <i class="fas fa-eye"></i> View Certificate
               </button>
-              <a href="upper_intermediate certificate.jpg" download class="btn download-btn">
-                <i class="fas fa-download"></i> Download
-              </a>
             </div>
           </div>
         </div>
@@ -2521,7 +2510,7 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
       <button class="modal-close" aria-label="Close">&times;</button>
       <h3 id="cert-title">Certificate</h3>
       <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
-        <a id="cert-download" class="btn" href="#" target="_blank" download style="display:none">Download</a>
+        <!-- download removed: viewers can only view certificates in the modal -->
       </div>
       <iframe id="cert-frame" src="" frameborder="0" aria-label="Certificate viewer"></iframe>
     </div>
@@ -2597,20 +2586,6 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
       function openModal(src, title) {
         frame.src = src;
         titleEl.textContent = title || 'Certificate';
-        const downloadLink = document.getElementById('cert-download');
-        if (downloadLink) {
-          downloadLink.href = src;
-          try {
-            const parts = src.split('/');
-            const name = parts[parts.length - 1] || 'certificate.pdf';
-            downloadLink.setAttribute('download', decodeURIComponent(name));
-            downloadLink.style.display = 'inline-block';
-          } catch (e) {
-            downloadLink.removeAttribute('download');
-            downloadLink.style.display = 'inline-block';
-          }
-        }
-
         modal.classList.add('open');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -2620,12 +2595,6 @@ WORKSHOP PROPOSAL WRITING FOR SUCCESS</h3>
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden', 'true');
         frame.src = '';
-        const downloadLink = document.getElementById('cert-download');
-        if (downloadLink) {
-          downloadLink.href = '#';
-          downloadLink.removeAttribute('download');
-          downloadLink.style.display = 'none';
-        }
         document.body.style.overflow = '';
       }
 
